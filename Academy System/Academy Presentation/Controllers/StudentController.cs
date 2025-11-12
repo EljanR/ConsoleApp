@@ -25,18 +25,18 @@ namespace Academy_Presentation.Controllers
             {
             Name: Helper.PrintConsole(ConsoleColor.Blue, "Enter Student name:");
                 string studentName = Console.ReadLine();
-                if (string.IsNullOrEmpty(studentName) || studentName.Any(char.IsDigit))
+                if (string.IsNullOrEmpty(studentName) || studentName.Any(char.IsDigit) || studentName.Length>15)
                 {
-                    Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number");
+                    Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number or the length of the name cannot be greater than 15");
                     goto Name;
 
                 }
 
             Surname: Helper.PrintConsole(ConsoleColor.Blue, "Enter Student surname:");
                 string studentSurname = Console.ReadLine();
-                if (string.IsNullOrEmpty(studentSurname) || studentSurname.Any(char.IsDigit))
+                if (string.IsNullOrEmpty(studentSurname) || studentSurname.Any(char.IsDigit) || studentSurname.Length<5)
                 {
-                    Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number");
+                    Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number or Name cannot be less than 5 letters!");
                     goto Surname;
 
                 }
@@ -45,7 +45,7 @@ namespace Academy_Presentation.Controllers
                 string addedAge = Console.ReadLine();
                 int age;
                 bool isAge = int.TryParse(addedAge, out age);
-                if (age >= 0)
+                if (age >= 18)
                 {
                     if (isAge)
                     {
@@ -72,10 +72,16 @@ namespace Academy_Presentation.Controllers
                         goto AGE;
                     }
                 }
+                else if (age < 0 || age ==0)
+                {
+                    Helper.PrintConsole(ConsoleColor.Red, "Age can't be negative or zero");
+                    goto AGE;
+                }
+
                 else
                 {
-                    Helper.PrintConsole(ConsoleColor.Red, "Age can't be negative");
-                    goto AGE;
+                    Helper.PrintConsole(ConsoleColor.Red, "Student age cannot be less than 18!!! or Age cannot be empty or Age cannot be a letter!!-"); goto AGE;
+
                 }
             }
             else
@@ -83,6 +89,7 @@ namespace Academy_Presentation.Controllers
                 Helper.PrintConsole(ConsoleColor.Red, "Add correct Group ID type");
                 goto GroupID;
             }
+            
         }
         public void GetById()
         {

@@ -79,5 +79,10 @@ namespace Service.Services.Implementations
                 string.Equals(g.Name.Trim(), name.Trim(), StringComparison.OrdinalIgnoreCase));
             return groups;
         }
+        //    public Groups Exite()
+        //    {
+
+        //        return;
+        //    }
     }
 }

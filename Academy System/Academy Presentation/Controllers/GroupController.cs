@@ -14,6 +14,7 @@ namespace Academy_Presentation.Controllers
     public class GroupController
     {
         private GroupService _groupService = new GroupService();
+
         public void Create()
         {
         Name: Helper.PrintConsole(ConsoleColor.Blue, "Add group Name");
@@ -23,12 +24,18 @@ namespace Academy_Presentation.Controllers
                 Helper.PrintConsole(ConsoleColor.Red, "Group name is usually empty");
                 goto Name;
             }
+            var yoxlaGroup = _groupService.GetByName(groupName);
+            if (yoxlaGroup != null)
+            {
+                Helper.PrintConsole(ConsoleColor.Red, "There is already a group with this name.");
+                goto Name;
+            }
 
         Teacher: Helper.PrintConsole(ConsoleColor.Blue, "Add group Teacher");
             string groupTeacher = Console.ReadLine();
-            if (string.IsNullOrEmpty(groupTeacher))
+            if (string.IsNullOrEmpty(groupTeacher) || groupTeacher.Length < 3)
             {
-                Helper.PrintConsole(ConsoleColor.Red, "Group Teacher is usually empty");
+                Helper.PrintConsole(ConsoleColor.Red, "Group Teacher is usually empty or Name cannot be less than 3 letters!");
                 goto Teacher;
             }
         Room: Helper.PrintConsole(ConsoleColor.Blue, "Add group Room");
@@ -38,6 +45,9 @@ namespace Academy_Presentation.Controllers
                 Helper.PrintConsole(ConsoleColor.Red, "Group Room is usually empty");
                 goto Room;
             }
+            groupName = groupName.ToUpper();
+            groupRoom = groupRoom.ToUpper();
+
             groupTeacher = char.ToUpper(groupTeacher[0]) + groupTeacher.Substring(1).ToLower();
             Groups group = new Groups { Name = groupName, Teacher = groupTeacher, Room = groupRoom };
             var result = _groupService.Create(group);
@@ -196,6 +206,7 @@ namespace Academy_Presentation.Controllers
                 return;
             }
 
+
             int id;
             bool isGroupID = int.TryParse(groupId, out id);
             if (isGroupID)
@@ -210,6 +221,11 @@ namespace Academy_Presentation.Controllers
                     {
                         newGroupName = findGroup.Name;
                     }
+                    //var yoxlaGroup = _groupService.GetByName(groupId);
+                    //if (yoxlaGroup != null)
+                    //{
+                    //    Helper.PrintConsole(ConsoleColor.Red, "There is already a group with this name.");
+                    //}
 
                     Helper.PrintConsole(ConsoleColor.Blue, "Add new Teacher or skip");
                     string newTeacher = Console.ReadLine();
@@ -232,6 +248,7 @@ namespace Academy_Presentation.Controllers
                     if (updateGroups == null) { Helper.PrintConsole(ConsoleColor.Red, "Library not Updated"); goto GroupID; }
                     else
                     {
+
                         Helper.PrintConsole(ConsoleColor.Green, $"Group ID: {id}, Group name: {groups.Name}, Teacher: {groups.Teacher}, Group Room: {groups.Room} ");
                     }
                 }
@@ -248,6 +265,7 @@ namespace Academy_Presentation.Controllers
                 Helper.PrintConsole(ConsoleColor.Red, "Invalid ID type, try again.");
                 goto GroupID;
             }
+
 
         }
         public void GetAllByName()
@@ -274,5 +292,6 @@ namespace Academy_Presentation.Controllers
             }
 
         }
+       
     }
 }
