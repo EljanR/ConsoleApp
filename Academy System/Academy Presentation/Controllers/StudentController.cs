@@ -14,6 +14,7 @@ namespace Academy_Presentation.Controllers
     public class StudentController
     {
         StudentService _studentService = new StudentService();
+
         public void Create()
         {
         GroupID: Helper.PrintConsole(ConsoleColor.Blue, "Enter Group ID:");

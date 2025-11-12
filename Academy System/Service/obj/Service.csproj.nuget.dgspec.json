@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Service\\Service.csproj": {}
+    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Service\\Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Domain\\Domain.csproj": {
+    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Elcan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Repository\\Repository.csproj": {
+    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\Elcan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Domain\\Domain.csproj"
+              "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Domain\\Domain.csproj"
               }
             }
           }
@@ -138,14 +138,14 @@
         }
       }
     },
-    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Service\\Service.csproj": {
+    "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Service\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Service\\Service.csproj",
+        "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Service\\Service.csproj",
         "packagesPath": "C:\\Users\\Elcan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Service\\obj\\",
+        "outputPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -166,8 +166,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\Academy System\\Repository\\Repository.csproj"
+              "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\Elcan\\OneDrive\\Şəkillər\\İş masası\\ConsoleApp\\Academy System\\Repository\\Repository.csproj"
               }
             }
           }
