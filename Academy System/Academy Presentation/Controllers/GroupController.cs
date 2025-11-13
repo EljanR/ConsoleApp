@@ -290,7 +290,7 @@ namespace Academy_Presentation.Controllers
         {
 
 
-            Helper.PrintConsole(ConsoleColor.Blue, "Search via Group name:");
+        GetAllByName: Helper.PrintConsole(ConsoleColor.Blue, "Search via Group name:");
             string searchName = Console.ReadLine();
 
             Groups groups = _groupService.GetByName(searchName);
@@ -299,15 +299,16 @@ namespace Academy_Presentation.Controllers
                 
                 Helper.PrintConsole(ConsoleColor.Green, $"Group ID: {groups.Id}, Group name: {groups.Name}, Teacher: {groups.Teacher}, Group Room: {groups.Room} ");
 
-                
+
 
 
             }
             else
             {
                 Helper.PrintConsole(ConsoleColor.Red, "Invalid name or doesn't exists any groups, please try again.");
-                Helper.PrintConsole(ConsoleColor.Yellow, "Create new Group[1] or try again[14] ");
+                Helper.PrintConsole(ConsoleColor.Yellow, "Create new Group or try again ");
 
+                goto GetAllByName;
 
             }
 

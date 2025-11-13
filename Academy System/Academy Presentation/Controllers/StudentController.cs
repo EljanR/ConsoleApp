@@ -37,7 +37,7 @@ namespace Academy_Presentation.Controllers
                 string studentSurname = Console.ReadLine();
                 if (string.IsNullOrEmpty(studentSurname) || studentSurname.Any(char.IsDigit) || studentSurname.Length<5|| !studentSurname.Any(char.IsLetter))
                 {
-                    Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number or Name cannot be less than 5 letters!");
+                    Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number or surName cannot be less than 5 letters!");
                     goto Surname;
 
                 }
