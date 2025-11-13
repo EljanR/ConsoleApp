@@ -33,14 +33,14 @@ namespace Academy_Presentation.Controllers
 
         Teacher: Helper.PrintConsole(ConsoleColor.Blue, "Add group Teacher");
             string groupTeacher = Console.ReadLine();
-            if (string.IsNullOrEmpty(groupTeacher) || groupTeacher.Length < 3)
+            if (string.IsNullOrEmpty(groupTeacher) || groupTeacher.Length < 3 || groupTeacher.Any(char.IsDigit) || !groupTeacher.Any(char.IsLetter))
             {
-                Helper.PrintConsole(ConsoleColor.Red, "Group Teacher is usually empty or Name cannot be less than 3 letters!");
+                Helper.PrintConsole(ConsoleColor.Red, "Group Teacher is usually empty or number or Name cannot be less than 3 letters!");
                 goto Teacher;
             }
         Room: Helper.PrintConsole(ConsoleColor.Blue, "Add group Room");
             string groupRoom = Console.ReadLine();
-            if (string.IsNullOrEmpty(groupRoom))
+            if (string.IsNullOrEmpty(groupRoom) )
             {
                 Helper.PrintConsole(ConsoleColor.Red, "Group Room is usually empty");
                 goto Room;
@@ -61,17 +61,27 @@ namespace Academy_Presentation.Controllers
             bool isGroupId = int.TryParse(groupId, out id);
             if (isGroupId)
             {
-                if (id > 0)
+                var yoxlaGroupId = _groupService.GetById(id);
+                if (yoxlaGroupId == null)
                 {
-                    _groupService.Delete(id);
-                    Helper.PrintConsole(ConsoleColor.DarkBlue, "Deleted");
-
+                    Helper.PrintConsole(ConsoleColor.Red, "There is no such Group");
+                    goto GroupId;
                 }
                 else
                 {
-                    Helper.PrintConsole(ConsoleColor.Red, "Id cannot be negative.");
-                    goto GroupId;
+                    if (id > 0)
+                    {
+                        _groupService.Delete(id);
+                        Helper.PrintConsole(ConsoleColor.DarkBlue, "Deleted");
+
+                    }
+                    else
+                    {
+                        Helper.PrintConsole(ConsoleColor.Red, "Id cannot be negative or zero!");
+                        goto GroupId;
+                    }
                 }
+                
             }
             else
             {
@@ -202,7 +212,8 @@ namespace Academy_Presentation.Controllers
             string groupId = Console.ReadLine();
             if (string.IsNullOrEmpty(groupId))
             {
-                Helper.PrintConsole(ConsoleColor.Yellow, "Update operation cancelled.");
+                Helper.PrintConsole(ConsoleColor.Yellow, "Update Cancelled.");
+                goto GroupID;
                 return;
             }
 
@@ -217,29 +228,36 @@ namespace Academy_Presentation.Controllers
                 {
                     Helper.PrintConsole(ConsoleColor.Blue, "Add new Group name or skip ");
                     string newGroupName = Console.ReadLine();
-                    if (newGroupName is null)
+                    if (string.IsNullOrWhiteSpace(newGroupName))
                     {
                         newGroupName = findGroup.Name;
                     }
-                    //var yoxlaGroup = _groupService.GetByName(groupId);
-                    //if (yoxlaGroup != null)
-                    //{
-                    //    Helper.PrintConsole(ConsoleColor.Red, "There is already a group with this name.");
-                    //}
+                //var yoxlaGroup = _groupService.GetByName(groupId);
+                //if (yoxlaGroup != null)
+                //{
+                //    Helper.PrintConsole(ConsoleColor.Red, "There is already a group with this name.");
+                //}
 
-                    Helper.PrintConsole(ConsoleColor.Blue, "Add new Teacher or skip");
+                Teacher: Helper.PrintConsole(ConsoleColor.Blue, "Add new Teacher or skip");
                     string newTeacher = Console.ReadLine();
-                    if (newTeacher is null)
+                    if (newTeacher.Any(char.IsDigit))
+                    {
+                        Helper.PrintConsole(ConsoleColor.Red, "Group Teacher is not number");
+                        goto Teacher;
+                    }
+                    else if (string.IsNullOrWhiteSpace(newTeacher) || newTeacher.Length > 3)
                     {
                         newTeacher = findGroup.Teacher;
                     }
+                    
 
                     Helper.PrintConsole(ConsoleColor.Blue, "Add new Room or skip");
                     string newRoom = Console.ReadLine();
-                    if (newRoom is null)
+                    if (string.IsNullOrWhiteSpace(newRoom))
                     {
                         newRoom = findGroup.Room;
                     }
+                    
 
                     Groups groups = new Groups { Name = newGroupName, Teacher = newTeacher, Room = newRoom };
 
@@ -278,8 +296,10 @@ namespace Academy_Presentation.Controllers
             Groups groups = _groupService.GetByName(searchName);
             if (groups != null)
             {
-
+                
                 Helper.PrintConsole(ConsoleColor.Green, $"Group ID: {groups.Id}, Group name: {groups.Name}, Teacher: {groups.Teacher}, Group Room: {groups.Room} ");
+
+                
 
 
             }

@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Repository.Repositories.Implementations;
 using Service.Services.Implementations;
+using Service.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Academy_Presentation.Controllers
             {
             Name: Helper.PrintConsole(ConsoleColor.Blue, "Enter Student name:");
                 string studentName = Console.ReadLine();
-                if (string.IsNullOrEmpty(studentName) || studentName.Any(char.IsDigit) || studentName.Length>15)
+                if (string.IsNullOrEmpty(studentName) || studentName.Any(char.IsDigit) || studentName.Length>15 || !studentName.Any(char.IsLetter))
                 {
                     Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number or the length of the name cannot be greater than 15");
                     goto Name;
@@ -34,7 +35,7 @@ namespace Academy_Presentation.Controllers
 
             Surname: Helper.PrintConsole(ConsoleColor.Blue, "Enter Student surname:");
                 string studentSurname = Console.ReadLine();
-                if (string.IsNullOrEmpty(studentSurname) || studentSurname.Any(char.IsDigit) || studentSurname.Length<5)
+                if (string.IsNullOrEmpty(studentSurname) || studentSurname.Any(char.IsDigit) || studentSurname.Length<5|| !studentSurname.Any(char.IsLetter))
                 {
                     Helper.PrintConsole(ConsoleColor.Red, "Group name can not be empty or number or Name cannot be less than 5 letters!");
                     goto Surname;
@@ -126,17 +127,28 @@ namespace Academy_Presentation.Controllers
             bool isID = int.TryParse(deleteID, out id);
             if (isID)
             {
-                if (id > 0)
+                var yoxlaGroupId = _studentService.GetById(id);
+                if (yoxlaGroupId == null)
                 {
-                    _studentService.Delete(id);
+                    Helper.PrintConsole(ConsoleColor.Red, "There is no such Student");
+                    goto StudentID;
 
-                    Helper.PrintConsole(ConsoleColor.DarkGreen, "All done,you can continue.");
+
                 }
                 else
                 {
-                    Helper.PrintConsole(ConsoleColor.Red, "Warning! ID can't be zero or negative,please try again");
-                    goto StudentID;
+                    if (id > 0)
+                    {
+                        _studentService.Delete(id);
 
+                        Helper.PrintConsole(ConsoleColor.DarkGreen, "All done,you can continue.");
+                    }
+                    else
+                    {
+                        Helper.PrintConsole(ConsoleColor.Red, "Warning! ID can't be zero or negative,please try again");
+                        goto StudentID;
+
+                    }
                 }
             }
             else
